@@ -14,8 +14,9 @@ for i = 1:countfruit
     for j=1:countdata
         filename = citradata(j).name;
         % Mengubah citra menjadi grey scale
+        image = imread(filename);
         if size(imread(filename),3) == 1
-            xcitra = imread(filename);
+            continue
         else
             xcitra = rgb2gray(imread(filename));
         end
@@ -25,6 +26,12 @@ for i = 1:countfruit
         featuresmat(j+countdata*(i-1),2) = features.Correlation;
         featuresmat(j+countdata*(i-1),3) = features.Energy;
         featuresmat(j+countdata*(i-1),4) = features.Homogeneity;
+        R = image(:,:,1);
+        G = image(:,:,2);
+        B = image(:,:,3);
+        featuresmat(j+countdata*(i-1),5) = R(22,50);
+        featuresmat(j+countdata*(i-1),6) = G(22,50);
+        featuresmat(j+countdata*(i-1),7) = B(22,50);
         
         kelas(j+countdata*(i-1)) = i;
     end

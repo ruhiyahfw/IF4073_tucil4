@@ -18,6 +18,12 @@ classdef ImageProcessingClassifier
             uji(1,2) = g.Correlation;
             uji(1,3) = g.Energy;
             uji(1,4) = g.Homogeneity;
+            R = img(:,:,1);
+            G = img(:,:,2);
+            B = img(:,:,3);
+            uji(1,5) = R(22,50);
+            uji(1,6) = G(22,50);
+            uji(1,7) = B(22,50);
             % Melakukan prediksi berdasarkan kesamaan kontras, korelasi,
             % entropi, dan homogeneity
             klasifikasi = predict(model,uji(1,:));
